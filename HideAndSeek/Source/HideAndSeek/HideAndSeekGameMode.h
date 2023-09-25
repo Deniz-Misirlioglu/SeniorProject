@@ -10,9 +10,10 @@ UCLASS(minimalapi)
 class AHideAndSeekGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-
-public:
 	AHideAndSeekGameMode();
+public:
+	virtual void PostLogin(APlayerController* NewPlayer) override;
+
 };
 
 
