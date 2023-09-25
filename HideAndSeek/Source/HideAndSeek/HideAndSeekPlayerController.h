@@ -43,6 +43,8 @@ protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
 	uint32 bMoveToMouseCursor : 1;
 
+	virtual void OnNetCleanup(UNetConnection* Connection) override;
+
 	virtual void SetupInputComponent() override;
 	
 	// To add mapping context

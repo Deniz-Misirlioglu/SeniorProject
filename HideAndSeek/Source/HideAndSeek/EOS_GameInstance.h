@@ -34,13 +34,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "EOS Functions")
 	void JoinSession();
 
-	//TSharedRef<FOnlineSessionSearch> SessionSearch;
+	void DestroySession();
+
+	TSharedPtr<FOnlineSessionSearch> SessionSearch;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EOS Variables");
 	FString OpenLevelText;
 
 	void LoginWithEOS_Return(int32 LocalUserNum, bool bWasSuccess, const FUniqueNetId& UserId, const FString& Error);
 	void OnCreateSessionCompleted(FName SessionName, bool bWasSuccessful);
+	void OnDestroySessionCompleted(FName SessionName, bool bWasSuccessful);
 	void OnFindSessionCompleted(bool bWasSuccess);
 	void OnJoinSessionCompleted(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 };

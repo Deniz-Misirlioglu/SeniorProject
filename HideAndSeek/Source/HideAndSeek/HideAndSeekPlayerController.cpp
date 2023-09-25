@@ -9,6 +9,8 @@
 #include "Engine/World.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "EOS_GameInstance.h"
+#include "HideAndSeek.h"
 
 AHideAndSeekPlayerController::AHideAndSeekPlayerController()
 {
@@ -115,3 +117,11 @@ void AHideAndSeekPlayerController::OnTouchReleased()
 	bIsTouch = false;
 	OnSetDestinationReleased();
 }
+
+void AHideAndSeekPlayerController::OnNetCleanup(UNetConnection* Connection) {
+	UEOS_GameInstance* GameInstanceRef = Cast<UEOS_GameInstance>(GetWorld()->GetGameInstance());
+	if (GameInstanceRef) {
+		GameInstanceRef->DestroySession();
+	}
+}
+
