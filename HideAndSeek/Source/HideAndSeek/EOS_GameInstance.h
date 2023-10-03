@@ -34,6 +34,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "EOS Functions")
 	void JoinSession();
 
+	UFUNCTION(BlueprintCallable, Category = "EOS Functions")
 	void DestroySession();
 
 	TSharedPtr<FOnlineSessionSearch> SessionSearch;
