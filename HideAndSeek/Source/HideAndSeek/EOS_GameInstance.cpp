@@ -73,6 +73,13 @@ void UEOS_GameInstance::OnCreateSessionCompleted(FName SessionName, bool bWasSuc
 
 void UEOS_GameInstance::OnDestroySessionCompleted(FName SessionName, bool bWasSuccessful)
 {
+	IOnlineSubsystem* SubsystemRef = Online::GetSubsystem(this->GetWorld());
+	if (SubsystemRef) {
+		IOnlineSessionPtr SessionPtrRef = SubsystemRef->GetSessionInterface();
+		if (SessionPtrRef) {
+			SessionPtrRef->ClearOnDestroySessionCompleteDelegates(this);
+		}
+	}
 }
 
 void UEOS_GameInstance::OnFindSessionCompleted(bool bWasSuccess)
