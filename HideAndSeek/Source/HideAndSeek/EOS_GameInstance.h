@@ -25,6 +25,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "EOS Functions")
 	bool IsPlayerLoggedIn();
 
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "EOS Functions")
+	bool IsPlayerInSession();
+
 	UFUNCTION(BlueprintCallable, Category = "EOS Functions")
 	void CreateEOSSession(bool bIsDedicatedServer, bool bIsLanServer, int32 NumberOfPublicConnections);
 

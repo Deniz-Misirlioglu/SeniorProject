@@ -6,6 +6,12 @@
 #include "OnlineSubsystem.h"
 #include "Interfaces/OnlineIdentityInterface.h"
 #include "Kismet/GameplayStatics.h"
+#include <string>
+
+using namespace std;
+
+static bool bIsInSession = false;
+static int bIsInSessionInt = 0;
 
 void UEOS_GameInstance::LoginWithEOS(FString ID, FString Token, FString LoginType)
 {
@@ -67,8 +73,12 @@ void UEOS_GameInstance::LoginWithEOS_Return(int32 LocalUserNum, bool bWasSuccess
 void UEOS_GameInstance::OnCreateSessionCompleted(FName SessionName, bool bWasSuccessful)
 {
 	if (bWasSuccessful) {
+		UE_LOG(LogTemp, Warning, TEXT("OnCreateSessionCompleted bIsInSession %d"), bIsInSessionInt);
+		bIsInSessionInt = 1;
+		bIsInSession = true;
 		GetWorld()->ServerTravel(OpenLevelText);
 	}
+	UE_LOG(LogTemp, Warning, TEXT("OnJoinSessionCompleted bIsInSession after %d"), bIsInSessionInt);
 }
 
 void UEOS_GameInstance::OnDestroySessionCompleted(FName SessionName, bool bWasSuccessful)
@@ -77,6 +87,8 @@ void UEOS_GameInstance::OnDestroySessionCompleted(FName SessionName, bool bWasSu
 	if (SubsystemRef) {
 		IOnlineSessionPtr SessionPtrRef = SubsystemRef->GetSessionInterface();
 		if (SessionPtrRef) {
+			bIsInSessionInt = 0;
+			bIsInSession = false;
 			SessionPtrRef->ClearOnDestroySessionCompleteDelegates(this);
 		}
 	}
@@ -116,16 +128,21 @@ void UEOS_GameInstance::OnJoinSessionCompleted(FName SessionName, EOnJoinSession
 					SessionPtrRef->GetResolvedConnectString(FName("MainSession"),JoinAddress);
 					UE_LOG(LogTemp, Warning, TEXT("Join Address is %s"), *JoinAddress);
 					if (!JoinAddress.IsEmpty()) {
+						UE_LOG(LogTemp, Warning, TEXT("OnJoinSessionCompleted bIsInSession intial %d"), bIsInSessionInt);
+						bIsInSession = true;
+						bIsInSessionInt = 1;
 						PlayerControllerRef->ClientTravel(JoinAddress, ETravelType::TRAVEL_Absolute);
 					}
 				}
 			}
 		}
 	}
+	UE_LOG(LogTemp, Warning, TEXT("OnJoinSessionCompleted bIsInSession after %d"), bIsInSessionInt);
 }
 
 void UEOS_GameInstance::CreateEOSSession(bool bIsDedicatedServer, bool bIsLanServer, int32 NumberOfPublicConnections)
 {
+
 	IOnlineSubsystem* SubsystemRef = Online::GetSubsystem(this->GetWorld());
 	if (SubsystemRef) {
 		IOnlineSessionPtr SessionPtrRef = SubsystemRef->GetSessionInterface();
@@ -143,6 +160,11 @@ void UEOS_GameInstance::CreateEOSSession(bool bIsDedicatedServer, bool bIsLanSer
 			SessionPtrRef->CreateSession(0,FName("MainSession"), SessionCreationInfo);
 		}
 	}
+}
+
+bool UEOS_GameInstance::IsPlayerInSession()
+{
+	return bIsInSession;
 }
 
 void UEOS_GameInstance::FindSessionAndJoin()
