@@ -14,7 +14,7 @@
         {
             "Name" : "AdvancedSteamSessions",
             "Type" : "RunTime",
-	    "LoadingPhase" : "PreDefault"
+			"LoadingPhase" : "PreDefault"
         } 
     ],
 	"Plugins": [
@@ -28,6 +28,10 @@
 		},
 		{
 			"Name": "OnlineSubsystemUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemSteam",
 			"Enabled": true
 		},
 		{

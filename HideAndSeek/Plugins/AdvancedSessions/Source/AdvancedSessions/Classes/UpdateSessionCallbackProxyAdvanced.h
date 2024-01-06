@@ -21,7 +21,7 @@ class UUpdateSessionCallbackProxyAdvanced : public UOnlineBlueprintCallProxyBase
 
 	// Creates a session with the default online subsystem with advanced optional inputs, you MUST fill in all categories or it will pass in values that you didn't want as default values
 	UFUNCTION(BlueprintCallable, meta=(BlueprintInternalUseOnly = "true", WorldContext="WorldContextObject",AutoCreateRefTerm="ExtraSettings"), Category = "Online|AdvancedSessions")
-	static UUpdateSessionCallbackProxyAdvanced* UpdateSession(UObject* WorldContextObject, const TArray<FSessionPropertyKeyPair> &ExtraSettings, int32 PublicConnections = 100, int32 PrivateConnections = 0, bool bUseLAN = false, bool bAllowInvites = false, bool bAllowJoinInProgress = false, bool bRefreshOnlineData = true, bool bIsDedicatedServer = false, bool bShouldAdvertise = true);
+	static UUpdateSessionCallbackProxyAdvanced* UpdateSession(UObject* WorldContextObject, const TArray<FSessionPropertyKeyPair> &ExtraSettings, int32 PublicConnections = 100, int32 PrivateConnections = 0, bool bUseLAN = false, bool bAllowInvites = false, bool bAllowJoinInProgress = false, bool bRefreshOnlineData = true, bool bIsDedicatedServer = false);
 
 	// UOnlineBlueprintCallProxyBase interface
 	virtual void Activate() override;
@@ -38,30 +38,28 @@ private:
 	FDelegateHandle OnUpdateSessionCompleteDelegateHandle;
 
 	// Number of public connections
-	int NumPublicConnections = 100;
+	int NumPublicConnections;
 
 	// Number of private connections
-	int NumPrivateConnections = 0;
+	int NumPrivateConnections;
 
 	// Whether or not to search LAN
-	bool bUseLAN = false;
+	bool bUseLAN;
 
 	// Whether or not to allow invites
-	bool bAllowInvites = true;
+	bool bAllowInvites;
 
 	// Store extra settings
 	TArray<FSessionPropertyKeyPair> ExtraSettings;
 
 	// Whether to update the online data
-	bool bRefreshOnlineData = true;
+	bool bRefreshOnlineData;
 
 	// Allow joining in progress
-	bool bAllowJoinInProgress = true;
+	bool bAllowJoinInProgress;
 
 	// Update whether this is a dedicated server or not
-	bool bDedicatedServer = false;
-
-	bool bShouldAdvertise = true;
+	bool bDedicatedServer;
 
 	// The world context object in which this call is taking place
 	UObject* WorldContextObject;

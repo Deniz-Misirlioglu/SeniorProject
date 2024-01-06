@@ -3,8 +3,6 @@
 #include "AutoLoginUserCallbackProxy.h"
 #include "Kismet/GameplayStatics.h"
 
-#include "Online.h"
-
 //////////////////////////////////////////////////////////////////////////
 // ULoginUserCallbackProxy
 
