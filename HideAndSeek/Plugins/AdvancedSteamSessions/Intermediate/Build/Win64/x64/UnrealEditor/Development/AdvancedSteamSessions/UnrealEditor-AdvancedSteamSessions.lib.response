@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-AdvancedSteamSessions.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Program Files\Epic Games\UE_5.2\UnrealProjects\HAS\HAS-SeniorProject\HideAndSeek\Intermediate\Build\Win64\x64\HideAndSeekEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.InclOrderUnreal5_1.h.obj"
+"C:\Program Files\Epic Games\UE_5.2\UnrealProjects\HAS\HAS-SeniorProject\HideAndSeek\Plugins\AdvancedSteamSessions\Intermediate\Build\Win64\x64\UnrealEditor\Development\AdvancedSteamSessions\Module.AdvancedSteamSessions.cpp.obj"
+"C:\Program Files\Epic Games\UE_5.2\UnrealProjects\HAS\HAS-SeniorProject\HideAndSeek\Plugins\AdvancedSteamSessions\Intermediate\Build\Win64\x64\UnrealEditor\Development\AdvancedSteamSessions\Default.rc2.res"
+/OUT:"C:\Program Files\Epic Games\UE_5.2\UnrealProjects\HAS\HAS-SeniorProject\HideAndSeek\Plugins\AdvancedSteamSessions\Intermediate\Build\Win64\x64\UnrealEditor\Development\AdvancedSteamSessions\UnrealEditor-AdvancedSteamSessions.lib"

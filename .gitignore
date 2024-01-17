@@ -1,9 +1,10 @@
-Binaries
-DerivedDataCache
-Intermediate
-Saved
-.vscode
-.vs
+/HideAndSeek/Binaries
+/HideAndSeek/DerivedDataCache
+/HideAndSeek/Intermediate
+/HideAndSeek/Saved
+/HideAndSeek/Content/StarterContent
+/HideAndSeek/.vscode
+/HideAndSeek/.vs
 *.VC.db
 *.opensdf
 *.opendb
