@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\program files\\epic games\\ue_5.2\\unrealprojects\\seniorproject\\hideandseek\\plugins\\victorybplibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\victorybplibrary\\uht\\victorybplibrary.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\program files\\epic games\\ue_5.2\\unrealprojects\\seniorproject\\hideandseek\\intermediate\\build\\win64\\x64\\hideandseekeditor\\development\\engine\\sharedpch.engine.shadowerrors.inclorderunreal5_1.h.pch",
+        "Includes": [
+            "c:\\program files\\epic games\\ue_5.2\\unrealprojects\\seniorproject\\hideandseek\\plugins\\victorybplibrary\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\victorybplibrary\\definitions.victorybplibrary.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
