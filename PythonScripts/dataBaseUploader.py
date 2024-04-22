@@ -4,7 +4,7 @@ from datetime import datetime
 import csv
 
 # Connect to MongoDB
-cluster = MongoClient('mongodb+srv://misirld:YP8HHlkWBAzgEyHV@hideandseekdata.nkcn2sb.mongodb.net/?retryWrites=true&w=majority')
+cluster = MongoClient('mongodb+srv://<USERNAME>:<PASSWORD>@hideandseekdata.nkcn2sb.mongodb.net/?retryWrites=true&w=majority')
 db = cluster['HAS-Data']
 collection = db['HAS-Garland']
 
